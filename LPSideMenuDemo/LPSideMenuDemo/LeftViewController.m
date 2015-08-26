@@ -1,23 +1,22 @@
 //
-//  CenterViewController.m
+//  LeftViewController.m
 //  LPSideMenuDemo
 //
-//  Created by 李鹏 on 15/5/3.
+//  Created by MacBook on 15/8/26.
 //  Copyright (c) 2015年 lipeng. All rights reserved.
 //
 
-#import "CenterViewController.h"
+#import "LeftViewController.h"
 
-@interface CenterViewController ()
+@interface LeftViewController ()
 
 @end
 
-@implementation CenterViewController
+@implementation LeftViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor grayColor];
-    self.title = @"content";
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
 - (void)didReceiveMemoryWarning {

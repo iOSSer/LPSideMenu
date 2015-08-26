@@ -15,6 +15,8 @@
 		E8A5511F1AF5EBCE007203E8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8A5511D1AF5EBCE007203E8 /* LaunchScreen.xib */; };
 		E8A5512B1AF5EBCE007203E8 /* LPSideMenuDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A5512A1AF5EBCE007203E8 /* LPSideMenuDemoTests.m */; };
 		E8A551361AF5ED5A007203E8 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A551351AF5ED5A007203E8 /* CenterViewController.m */; };
+		FADDE2831B8D617900890D5C /* LPSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FADDE2821B8D617900890D5C /* LPSideMenu.m */; };
+		FADDE2861B8D61E500890D5C /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADDE2851B8D61E500890D5C /* LeftViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,10 @@
 		E8A5512A1AF5EBCE007203E8 /* LPSideMenuDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LPSideMenuDemoTests.m; sourceTree = "<group>"; };
 		E8A551341AF5ED5A007203E8 /* CenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterViewController.h; sourceTree = "<group>"; };
 		E8A551351AF5ED5A007203E8 /* CenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterViewController.m; sourceTree = "<group>"; };
+		FADDE2811B8D617900890D5C /* LPSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPSideMenu.h; sourceTree = "<group>"; };
+		FADDE2821B8D617900890D5C /* LPSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPSideMenu.m; sourceTree = "<group>"; };
+		FADDE2841B8D61E500890D5C /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		FADDE2851B8D61E500890D5C /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +90,15 @@
 		E8A5510D1AF5EBCD007203E8 /* LPSideMenuDemo */ = {
 			isa = PBXGroup;
 			children = (
+				FADDE27D1B8D5E9B00890D5C /* LPSideMenu */,
 				E8A551121AF5EBCD007203E8 /* AppDelegate.h */,
 				E8A551131AF5EBCD007203E8 /* AppDelegate.m */,
 				E8A551151AF5EBCD007203E8 /* ViewController.h */,
 				E8A551161AF5EBCD007203E8 /* ViewController.m */,
 				E8A551341AF5ED5A007203E8 /* CenterViewController.h */,
 				E8A551351AF5ED5A007203E8 /* CenterViewController.m */,
+				FADDE2841B8D61E500890D5C /* LeftViewController.h */,
+				FADDE2851B8D61E500890D5C /* LeftViewController.m */,
 				E8A551181AF5EBCD007203E8 /* Main.storyboard */,
 				E8A5511B1AF5EBCE007203E8 /* Images.xcassets */,
 				E8A5511D1AF5EBCE007203E8 /* LaunchScreen.xib */,
@@ -122,6 +131,15 @@
 				E8A551291AF5EBCE007203E8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FADDE27D1B8D5E9B00890D5C /* LPSideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FADDE2811B8D617900890D5C /* LPSideMenu.h */,
+				FADDE2821B8D617900890D5C /* LPSideMenu.m */,
+			);
+			name = LPSideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,7 +243,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8A551171AF5EBCD007203E8 /* ViewController.m in Sources */,
+				FADDE2831B8D617900890D5C /* LPSideMenu.m in Sources */,
 				E8A551361AF5ED5A007203E8 /* CenterViewController.m in Sources */,
+				FADDE2861B8D61E500890D5C /* LeftViewController.m in Sources */,
 				E8A551141AF5EBCD007203E8 /* AppDelegate.m in Sources */,
 				E8A551111AF5EBCD007203E8 /* main.m in Sources */,
 			);
@@ -420,6 +440,7 @@
 				E8A551301AF5EBCE007203E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8A551311AF5EBCE007203E8 /* Build configuration list for PBXNativeTarget "LPSideMenuDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +449,7 @@
 				E8A551331AF5EBCE007203E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

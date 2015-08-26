@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "LPSideMenu.h"
+#import "LeftViewController.h"
+#import "CenterViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -18,9 +21,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    ViewController *vc = [[ViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    self.window.rootViewController = nav;
+    CenterViewController *center = [[CenterViewController alloc] init];
+    UINavigationController *content = [[UINavigationController alloc] initWithRootViewController:center];
+    LeftViewController *left = [[LeftViewController alloc] init];
+    LPSideMenu *menu = [[LPSideMenu alloc] initWithContentViewController:content leftViewController:left];
+    self.window.rootViewController = menu;
     [self.window makeKeyAndVisible];
     
     return YES;
