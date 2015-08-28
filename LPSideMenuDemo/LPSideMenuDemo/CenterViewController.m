@@ -7,6 +7,7 @@
 //
 
 #import "CenterViewController.h"
+#import "AppDelegate.h"
 
 @interface CenterViewController ()
 
@@ -18,6 +19,27 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor grayColor];
     self.title = @"content";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showLeft)];
+}
+
+- (void) showLeft
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.menu showLeft:!delegate.menu.isShowing];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.menu.menuEnable = YES;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    delegate.menu.menuEnable = NO;
 }
 
 - (void)didReceiveMemoryWarning {

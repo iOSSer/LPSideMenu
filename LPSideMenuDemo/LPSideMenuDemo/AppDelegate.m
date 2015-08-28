@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "LPSideMenu.h"
-#import "LeftViewController.h"
-#import "CenterViewController.h"
+
 
 @interface AppDelegate ()
 
-@property (nonatomic, strong) LPSideMenu *menu;
+
 
 @end
 
@@ -32,13 +30,6 @@
     [self.window makeKeyAndVisible];
     
     return YES;
-}
-
-- (void) showLeftVC:(BOOL)show
-{
-    if (!show) {
-        [self.menu showLeft:show];
-    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

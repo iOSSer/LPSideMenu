@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LPSideMenu.h"
+#import "LeftViewController.h"
+#import "CenterViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void) showLeftVC:(BOOL)show;
+@property (nonatomic, strong) LPSideMenu *menu;
 
 @end
 

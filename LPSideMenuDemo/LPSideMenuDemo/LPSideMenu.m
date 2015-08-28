@@ -11,37 +11,37 @@
 @interface LPSideMenu ()
 
 @property (nonatomic, strong) UIPanGestureRecognizer *pan;
-
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, assign) CGPoint beginPoint;
-
-
 
 @end
 
+static CGFloat const defaultScrollOffset = 0.4;
+
 @implementation LPSideMenu
 {
-    CGFloat distance;
+    BOOL isShow;
 }
 
-//static CGFloat const fullDistanceValue = 0.78;
-//static CGFloat const proportionValue = 0.77;
+- (BOOL)isShowing
+{
+    return isShow;
+}
 
 - (instancetype)initWithContentViewController:(UIViewController *)contentViewController leftViewController:(UIViewController *)leftViewController
 {
-    
     self = [super init];
     if (self) {
         _contentViewController = contentViewController;
         _leftViewController = leftViewController;
     }
-    
     return self;
 }
 
 - (CGFloat) getOffsetValue
 {
     if (!self.scrollOffset) {
-        self.scrollOffset = 0.4;
+        self.scrollOffset = defaultScrollOffset;
     }
     return self.scrollOffset;
 }
@@ -68,17 +68,25 @@
         [self.view sendSubviewToBack:leftView];
     }
     
-//    distance = 0;
     self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
     [self.view addGestureRecognizer:self.pan];
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.contentViewController.view addGestureRecognizer:self.tap];
+}
+
+- (void) tapAction:(UITapGestureRecognizer *)tap
+{
+    CGPoint point = [tap locationInView:self.view];
+    if (CGRectContainsPoint(self.contentViewController.view.frame, point)) { //判断点击的点是否在中间视图上
+        [self showLeft:NO];
+    }
 }
 
 - (void) panAction:(UIPanGestureRecognizer *)pan
 {
     CGPoint point = [pan locationInView:self.view];
     CGFloat viewLeft = [pan translationInView:self.view].x;
-//    NSLog(@"%f %f", point.x, viewLeft);
-//    CGFloat trueDistance = distance + viewLeft;
+    isShow = NO;
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
             self.beginPoint = point;
@@ -86,31 +94,19 @@
         case UIGestureRecognizerStateChanged:
         {
             UIView *contentView = self.contentViewController.view;
-            
             self.contentViewController.view.frame = CGRectMake(self.beginPoint.x + viewLeft, 0, CGRectGetWidth(contentView.bounds), CGRectGetHeight(contentView.bounds));
-//            NSLog(@"pointx %f x %f", point.x, viewLeft);
-            
-//            NSLog(@"%@", NSStringFromCGRect(self.contentViewController.view.frame));
-//            NSLog(@"%f", [self getOffsetValue]);
         }
             break;
         
         case UIGestureRecognizerStateEnded:
         {
-            CGFloat leftValue = 1 - [self getOffsetValue];
-            
-            
             CGFloat contentLeft = self.contentViewController.view.frame.origin.x;
             if (contentLeft < CGRectGetWidth(self.view.bounds) / 3.5) {
                 [self showLeft:NO];
             }else
             {
-                CGFloat contentLeft = CGRectGetWidth(self.view.bounds) *  (1 - [self getOffsetValue]);
-                [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    self.contentViewController.view.frame = CGRectMake(contentLeft, 0, CGRectGetWidth(self.contentViewController.view.bounds), CGRectGetHeight(self.contentViewController.view.bounds));
-                } completion:^(BOOL finished) {
-                    
-                }];
+                [self showLeft:YES];
+                
             }
         }
             break;
@@ -119,8 +115,11 @@
     }
 }
 
+
 - (void)showLeft:(BOOL)show
 {
+    isShow = show;
+    self.tap.enabled = isShow;
     if (!show) {
         
         [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -130,47 +129,32 @@
         }];
         return;
     }
+    // to right
+    CGFloat contentLeft = CGRectGetWidth(self.view.bounds) *  (1 - [self getOffsetValue]);
+    [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+        self.contentViewController.view.frame = CGRectMake(contentLeft, 0, CGRectGetWidth(self.contentViewController.view.bounds), CGRectGetHeight(self.contentViewController.view.bounds));
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
-//- (void)showLeft
-//{
-//    NSLog(@"%f", CGRectGetWidth(self.view.bounds) / 3);
-//    if (self.contentViewController.view.frame.origin.x < CGRectGetWidth(self.view.bounds) / 3) {
-//        [UIView animateWithDuration:0.375 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-//            self.contentViewController.view.center = self.view.center;
-//        } completion:^(BOOL finished) {
-//
-//        }];
-//    }
-//}
-
-- (void)showRight
-{
-    
-}
 - (void)showContent
 {
-    [UIView animateWithDuration:0.375 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+    [UIView animateWithDuration:0.35 delay:0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.contentViewController.view.center = CGPointMake(CGRectGetWidth(self.view.bounds) + 20, self.view.center.y);
     } completion:^(BOOL finished) {
         
     }];
 }
 
+- (void)setMenuEnable:(BOOL)menuEnable
+{
+    self.pan.enabled = menuEnable;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

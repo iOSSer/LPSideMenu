@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Second";
     self.view.backgroundColor = [UIColor purpleColor];
 }
 

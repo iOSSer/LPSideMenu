@@ -26,6 +26,7 @@
     table.delegate = self;
     table.dataSource = self;
     [self.view addSubview:table];
+    table.tableFooterView = [UIView new];
     [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"1"];
 }
 
@@ -44,15 +45,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate showLeftVC:NO];
-    
-//     UIWindow *window = [UIApplication sharedApplication].windows.lastObject;
-//    LPSideMenu *menu = (LPSideMenu *)window.rootViewController;
-//    [menu showLeft:NO];
-    if (indexPath.row == 2) {
+    [delegate.menu showLeft:NO];
+    if (indexPath.row == 0) {
         SecondViewController *second = [[SecondViewController alloc] init];
         LPSideMenu *menu = (LPSideMenu *)delegate.window.rootViewController;
-        [menu.leftViewController.navigationController pushViewController:second animated:YES];
+        if ([menu.contentViewController isKindOfClass:[UINavigationController class]]) {
+            UINavigationController *navContent = (UINavigationController *)menu.contentViewController;
+            [navContent pushViewController:second animated:YES];
+        }
+        
     }
 }
 
