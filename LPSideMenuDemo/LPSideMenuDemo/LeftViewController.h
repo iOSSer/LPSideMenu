@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LeftViewController : UIViewController
+#import "SecondViewController.h"
+#import "LPSideMenu.h"
+#import "AppDelegate.h"
+@interface LeftViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @end

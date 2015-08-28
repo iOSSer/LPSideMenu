@@ -12,8 +12,10 @@
 
 @property (nonatomic, readwrite, strong) UIViewController *contentViewController;
 @property (nonatomic, readwrite, strong) UIViewController *leftViewController;
+@property (nonatomic, readwrite, assign) CGFloat scrollOffset;
 
 - (instancetype) initWithContentViewController:(UIViewController *)contentViewController leftViewController:(UIViewController *)leftViewController;
 
+- (void) showLeft:(BOOL) show;
 
 @end

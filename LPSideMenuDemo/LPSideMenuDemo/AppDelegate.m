@@ -13,6 +13,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) LPSideMenu *menu;
+
 @end
 
 @implementation AppDelegate
@@ -21,14 +23,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    CenterViewController *center = [[CenterViewController alloc] init];
-    UINavigationController *content = [[UINavigationController alloc] initWithRootViewController:center];
+    CenterViewController *content = [[CenterViewController alloc] init];
+    UINavigationController *contentNav = [[UINavigationController alloc] initWithRootViewController:content];
     LeftViewController *left = [[LeftViewController alloc] init];
-    LPSideMenu *menu = [[LPSideMenu alloc] initWithContentViewController:content leftViewController:left];
-    self.window.rootViewController = menu;
+    UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:left];
+    self.menu = [[LPSideMenu alloc] initWithContentViewController:contentNav leftViewController:leftNav];
+    self.window.rootViewController = self.menu;
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+
+- (void) showLeftVC:(BOOL)show
+{
+    if (!show) {
+        [self.menu showLeft:show];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

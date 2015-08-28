@@ -13,10 +13,47 @@
 @end
 
 @implementation LeftViewController
+{
+    NSArray *modules;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Left";
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    modules = [NSArray arrayWithObjects:@"我的相册", @"我的收藏", @"我的电脑", @"设置", nil];
+    UITableView *table = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    table.delegate = self;
+    table.dataSource = self;
+    [self.view addSubview:table];
+    [table registerClass:[UITableViewCell class] forCellReuseIdentifier:@"1"];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return modules.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"1" forIndexPath:indexPath];
+    cell.textLabel.text = modules[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate showLeftVC:NO];
+    
+//     UIWindow *window = [UIApplication sharedApplication].windows.lastObject;
+//    LPSideMenu *menu = (LPSideMenu *)window.rootViewController;
+//    [menu showLeft:NO];
+    if (indexPath.row == 2) {
+        SecondViewController *second = [[SecondViewController alloc] init];
+        LPSideMenu *menu = (LPSideMenu *)delegate.window.rootViewController;
+        [menu.leftViewController.navigationController pushViewController:second animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
