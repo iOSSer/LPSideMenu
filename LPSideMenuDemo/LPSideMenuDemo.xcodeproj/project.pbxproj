@@ -18,6 +18,7 @@
 		FADDE2831B8D617900890D5C /* LPSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FADDE2821B8D617900890D5C /* LPSideMenu.m */; };
 		FADDE2861B8D61E500890D5C /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FADDE2851B8D61E500890D5C /* LeftViewController.m */; };
 		FAE87ABC1B903CA2000CFB4E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE87ABB1B903CA2000CFB4E /* SecondViewController.m */; };
+		FAE87ABF1B904EB2000CFB4E /* iOS Simulator Screen Shot 2015年8月28日 下午4.05.50.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE87ABE1B904EB2000CFB4E /* iOS Simulator Screen Shot 2015年8月28日 下午4.05.50.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		FADDE2851B8D61E500890D5C /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		FAE87ABA1B903CA2000CFB4E /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		FAE87ABB1B903CA2000CFB4E /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		FAE87ABE1B904EB2000CFB4E /* iOS Simulator Screen Shot 2015年8月28日 下午4.05.50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen Shot 2015年8月28日 下午4.05.50.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				FAE87ABB1B903CA2000CFB4E /* SecondViewController.m */,
 				E8A551181AF5EBCD007203E8 /* Main.storyboard */,
 				E8A5511B1AF5EBCE007203E8 /* Images.xcassets */,
+				FAE87ABD1B904E73000CFB4E /* images */,
 				E8A5511D1AF5EBCE007203E8 /* LaunchScreen.xib */,
 				E8A5510E1AF5EBCD007203E8 /* Supporting Files */,
 			);
@@ -145,6 +148,14 @@
 				FADDE2821B8D617900890D5C /* LPSideMenu.m */,
 			);
 			name = LPSideMenu;
+			sourceTree = "<group>";
+		};
+		FAE87ABD1B904E73000CFB4E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				FAE87ABE1B904EB2000CFB4E /* iOS Simulator Screen Shot 2015年8月28日 下午4.05.50.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +240,7 @@
 			files = (
 				E8A5511A1AF5EBCD007203E8 /* Main.storyboard in Resources */,
 				E8A5511F1AF5EBCE007203E8 /* LaunchScreen.xib in Resources */,
+				FAE87ABF1B904EB2000CFB4E /* iOS Simulator Screen Shot 2015年8月28日 下午4.05.50.png in Resources */,
 				E8A5511C1AF5EBCE007203E8 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
