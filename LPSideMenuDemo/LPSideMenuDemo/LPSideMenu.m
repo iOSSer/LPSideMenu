@@ -55,8 +55,8 @@ static CGFloat const defaultScrollOffset = 0.4;
         UIView *contentView = self.contentViewController.view;
         contentView.layer.shadowColor = [UIColor grayColor].CGColor;
         contentView.layer.shadowOffset = CGSizeMake(- 4, 3);
-        contentView.layer.shadowOpacity = 0.5;
-        contentView.layer.shadowRadius = 4;
+        contentView.layer.shadowOpacity = 0.3;
+        contentView.layer.shadowRadius = 2;
         [self.view addSubview:contentView];
     }
     
@@ -95,6 +95,7 @@ static CGFloat const defaultScrollOffset = 0.4;
         {
             UIView *contentView = self.contentViewController.view;
             self.contentViewController.view.frame = CGRectMake(self.beginPoint.x + viewLeft, 0, CGRectGetWidth(contentView.bounds), CGRectGetHeight(contentView.bounds));
+//            NSLog(@"beginpointx %f viewleft %f", self.beginPoint.x, viewLeft);
         }
             break;
         
@@ -108,6 +109,7 @@ static CGFloat const defaultScrollOffset = 0.4;
                 [self showLeft:YES];
                 
             }
+            self.beginPoint = CGPointZero;
         }
             break;
         default:

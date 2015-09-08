@@ -26,9 +26,9 @@
     LeftViewController *left = [[LeftViewController alloc] init];
     UINavigationController *leftNav = [[UINavigationController alloc] initWithRootViewController:left];
     self.menu = [[LPSideMenu alloc] initWithContentViewController:contentNav leftViewController:leftNav];
+//    self.menu.scrollOffset = 0.5;//可不设置默认为0.4，即中间视图内容只显示出:屏幕宽度 * 0.4;
     self.window.rootViewController = self.menu;
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 
