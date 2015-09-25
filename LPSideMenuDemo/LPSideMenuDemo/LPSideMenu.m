@@ -68,8 +68,8 @@ static CGFloat const defaultScrollOffset = 0.4;
         [self.view sendSubviewToBack:leftView];
     }
     
-    self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
-    [self.view addGestureRecognizer:self.pan];
+//    self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panAction:)];
+//    [self.view addGestureRecognizer:self.pan];
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.contentViewController.view addGestureRecognizer:self.tap];
 }
@@ -93,8 +93,12 @@ static CGFloat const defaultScrollOffset = 0.4;
             break;
         case UIGestureRecognizerStateChanged:
         {
+            if (_beginPoint.x > point.x) {
+                return;
+            }
             UIView *contentView = self.contentViewController.view;
             self.contentViewController.view.frame = CGRectMake(self.beginPoint.x + viewLeft, 0, CGRectGetWidth(contentView.bounds), CGRectGetHeight(contentView.bounds));
+            NSLog(@"begin %f change %f", _beginPoint.x, point.x);
 //            NSLog(@"beginpointx %f viewleft %f", self.beginPoint.x, viewLeft);
         }
             break;
